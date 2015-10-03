@@ -1,1 +1,34 @@
-/* Empty. Add your own CSS if you like */
+
+/* Estilo del titulo del proyecto */
+.title{
+	font-family: 'Kaushan Script', cursive;
+}
+
+/* Estilo de fondo para el proyecto */
+.background{
+ background-color: #f6f6f6;
+ padding: 32px 0px;
+}
+
+/* Header transparente para la información del producto */
+.bar.bar-light {
+  background-color: rgba(255,255,255,0) !important; /* or transparent, or background:none */
+  border: 0;
+}
+
+/* Centra la popularidad y la cantidad del producto */
+.col{
+	text-align: center;
+}
+
+/* popularidad */
+.popularidad{
+	font-size: 22px;
+	color: #666;
+}
+
+.cantidad{
+	font-size: 22px;
+	color: #666;
+	margin: 0px 5px 0px 19px;
+}
