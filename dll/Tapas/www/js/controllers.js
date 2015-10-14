@@ -1,22 +1,7 @@
-angular.module("modulocliente.controllers", ["ionic", "firebase"])
+angular.module("modulocliente.controllers", ["ionic"])
 
 .controller("contenido", function($scope, $ionicSideMenuDelegate, $firebaseArray){
 	
-	//Se consultan los primeros 4 productos de la general
-	//var OFProductos = new Firebase("https://licoresgeneral.firebaseio.com/1");
-	//$scope.Productos = $firebaseArray(OFProductos);
-
-	var OFProductos = new Firebase("https://licoresgeneral.firebaseio.com/1");
-	//var scrollRef = new Firebase.util.Scroll(OFProductos, 'popularidad');
-  	
-  	OFProductos.orderByChild("popularidad").startAt(83).endAt(2444443)
-  	.on("child_added", function(snapshot) {
-	  console.log("Key: "+snapshot.key() + " - Pdad: " + snapshot.val().popularidad);
-	});
-
-
-  	//scrollRef.scroll.next(3);
-
   	//$scope.Productos.scroll = scrollRef.scroll;
 
 	$scope.popularidad = 0;
