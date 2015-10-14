@@ -1,11 +1,11 @@
-angular.module("modulocliente",["modulocliente.controllers","ionic","firebase"])
+angular.module("modulocliente",["modulocliente.controllers","ionic"])
 
-.run(function($ionicPlatform, $firebaseArray) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    	
-    var OFProductos = new Firebase("https://licoresgeneral.firebaseio.com/");
-    $firebaseArray(OFProductos);
-    
+
+
+
+
 
   });
 })

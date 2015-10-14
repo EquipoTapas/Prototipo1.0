@@ -1,24 +1,31 @@
-angular.module("modulocliente.controllers", ["ionic"])
+angular.module("modulocliente.controllers", ["ionic", "firebase"])
 
-.controller("contenido", function($scope, $ionicSideMenuDelegate){
+.controller("contenido", function($scope, $ionicSideMenuDelegate, $firebaseArray){
 	
+	//Se consultan los primeros 4 productos de la general
+	//var OFProductos = new Firebase("https://licoresgeneral.firebaseio.com/1");
+	//$scope.Productos = $firebaseArray(OFProductos);
+
+	var OFProductos = new Firebase("https://licoresgeneral.firebaseio.com/1");
+	//var scrollRef = new Firebase.util.Scroll(OFProductos, 'popularidad');
+  	
+  	OFProductos.orderByChild("popularidad").startAt(83).endAt(2444443)
+  	.on("child_added", function(snapshot) {
+	  console.log("Key: "+snapshot.key() + " - Pdad: " + snapshot.val().popularidad);
+	});
+
+
+  	//scrollRef.scroll.next(3);
+
+  	//$scope.Productos.scroll = scrollRef.scroll;
+
+	$scope.popularidad = 0;
+	$scope.cantidad = 0;
+
 	//Evento clic Menú Superior Izq
 	$scope.toggleLeft = function() {
 	    $ionicSideMenuDelegate.toggleLeft();
 	};
-
-	$scope.cantidad = "0";
-	var objeto = [
-		{"id":"333","img":"https://goo.gl/jSyabg","popularidad":"221"},
-		{"id":"444","img":"https://goo.gl/Appp1W","popularidad":"83"},
-		{"id":"555","img":"http://goo.gl/GUKkTM","popularidad":"46"},
-		{"id":"666","img":"http://goo.gl/7pfsBQ","popularidad":"23"},
-		{"id":"777","img":"http://goo.gl/YmmiqQ","popularidad":"32"},
-		{"id":"888","img":"https://goo.gl/zYeX26","popularidad":"11"}
-	]
-
-	$scope.popularidad = 0;
-	$scope.cantidad = 0;
 
 	$scope.AumentarPopularidad = function(){
 		$scope.popularidad = $scope.popularidad  + 1;
@@ -27,7 +34,6 @@ angular.module("modulocliente.controllers", ["ionic"])
 	$scope.AumentarCantidad = function(){
 		$scope.cantidad = $scope.cantidad  + 1;
 	}
-
 	
 	$scope.DisminuirCantidad = function(){
 		if ($scope.cantidad > 0) {
@@ -38,9 +44,6 @@ angular.module("modulocliente.controllers", ["ionic"])
 	$scope.InformacionProducto = function(){
 		alert("Información Producto");
 	}
-
-	
-
 })
 
 .controller("lizq", function($scope){
